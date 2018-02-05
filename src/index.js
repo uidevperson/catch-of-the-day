@@ -5,6 +5,7 @@ import { BrowserRouter, Match, Miss } from 'react-router';
 
 import StorePicker from './components/StorePicker';
 import App from  './components/App';
+import NotFound from  './components/NotFound';
 import './css/style.css';
 
 const Root = () => {
@@ -12,7 +13,8 @@ const Root = () => {
 		<BrowserRouter>
 			<div>
 				<Match exactly pattern="/" component={StorePicker} />
-				<Match pattern="/store/:id store" component={App} />				
+				<Match pattern="/store/:storeId" component={App} />
+				<Miss component={NotFound} />			
 			</div>
 		</BrowserRouter>
 	)
