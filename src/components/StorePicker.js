@@ -10,13 +10,13 @@ class StorePicker extends React.Component {
 
 	gotToStore(e) {
 		e.preventDefault()
-		console.log(this.storeInput);
+		console.log(this);
 		//first grab the text from the input
 		//second transition from / to /store/:storeId	
 	}
 	render(){
 		return (
-			<form className="store-selector" onSubmit={this.gotToStore.bind(this)}>
+			<form className="store-selector" onSubmit={(e) => {this.gotToStore(e)}} >
 		{ /*	 comment FFS */ }
 				<h2>Please enter a store</h2>
 				<input type="text" required placeholder="Store name" defaultValue={getFunName()} 
