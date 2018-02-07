@@ -10,7 +10,7 @@ class StorePicker extends React.Component {
 
 	gotToStore(e) {
 		e.preventDefault()
-		console.log(this);
+		console.log(this.storeInput.value);
 		//first grab the text from the input
 		//second transition from / to /store/:storeId	
 	}
