@@ -3,10 +3,10 @@ import React from 'react';
 import { getFunName } from '../helpers';
 
 class StorePicker extends React.Component {
-	constructor(){
-		super();
-		this.gotToStore = this.gotToStore.bind(this);
-	}
+	// constructor(){
+	// 	super();
+	// 	this.gotToStore = this.gotToStore.bind(this);
+	// }
 
 	gotToStore(e) {
 		e.preventDefault()
@@ -16,7 +16,7 @@ class StorePicker extends React.Component {
 	}
 	render(){
 		return (
-			<form className="store-selector" onSubmit={this.gotToStore}>
+			<form className="store-selector" onSubmit={this.gotToStore.bind(this)}>
 		{ /*	 comment FFS */ }
 				<h2>Please enter a store</h2>
 				<input type="text" required placeholder="Store name" defaultValue={getFunName()} 
