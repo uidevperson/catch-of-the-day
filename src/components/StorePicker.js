@@ -9,9 +9,11 @@ class StorePicker extends React.Component {
 	// }
 	gotToStore(e) {
 		e.preventDefault()
-		console.log(this.storeInput.value);
+		const storeId =this.storeInput.value;
+		console.log('going to ', storeId);
 		//first grab the text from the input
 		//second transition from / to /store/:storeId	
+		this.context.router.transitionTo(`/store/${storeId}`);
 	}
   
 	render(){
