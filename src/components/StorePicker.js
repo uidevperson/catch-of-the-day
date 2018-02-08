@@ -7,13 +7,13 @@ class StorePicker extends React.Component {
 	// 	super();
 	// 	this.gotToStore = this.gotToStore.bind(this);
 	// }
-
 	gotToStore(e) {
 		e.preventDefault()
 		console.log(this.storeInput.value);
 		//first grab the text from the input
 		//second transition from / to /store/:storeId	
 	}
+  
 	render(){
 		return (
 			<form className="store-selector" onSubmit={(e) => {this.gotToStore(e)}} >
