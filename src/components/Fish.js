@@ -7,7 +7,7 @@ class Fish extends React.Component {
 		const {details} = this.props;
 		const isAvailable = details.status === 'available';
 		const buttonText  = isAvailable ? 'Add To Order': 'Sold Out!';
-
+		// render out list detail for every fish
 		return (
 			<li className="menu-fish">
 				 <img src={details.image} alt={details.name} />
