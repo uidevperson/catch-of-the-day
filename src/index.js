@@ -6,7 +6,7 @@ import StorePicker from './components/StorePicker';
 import App from  './components/App';
 import NotFound from  './components/NotFound';
 import './css/style.css';
-
+// router component
 const Root = () => {
 	return (
 		<BrowserRouter>
