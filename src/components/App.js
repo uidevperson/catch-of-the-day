@@ -55,7 +55,6 @@ class App extends React.Component {
 		order[key] = order[key] + 1 || 1;
 		//set state
 		this.setState({order});
-		// debugger;
 	}
 
 	render(){
