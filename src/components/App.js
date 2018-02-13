@@ -53,8 +53,7 @@ class App extends React.Component {
 		const order = {...this.state.order};
 		//update or add new no. of fish ordered
 		order[key] = order[key] + 1 || 1;
-		//set state
-		this.setState({order});
+		this.setState({order}); //set state
 	}
 
 	render(){
