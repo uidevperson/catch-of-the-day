@@ -21,11 +21,21 @@ class App extends React.Component {
 	}
 
 	componentWillMount(){
+		// runs before app is rendered
 		this.ref = base.syncState(`${this.props.params.storeId}/fishes`
-			,{
-				context: this,
-				state: 'fishes'
-			});
+		,{
+			context: this,
+			state: 'fishes'
+		});
+		// check if there is any order in local storage
+		const localStorageRef = localStorage.getItem(`order-${this.props.params.storeId}`);
+		// check if something in local storage
+		if(localStorageRef){
+			// update our App component order state
+			this.setState({
+				order: JSON.parse(localStorageRef)
+			});	
+		}
 	}
 	//
 	componentWillUnmount(){
