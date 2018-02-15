@@ -33,7 +33,7 @@ class App extends React.Component {
 	}
 
 	componentWillUpdate(nextProps, nextState){
-		console.log('msg', nextProps, nextState);
+		localStorage.setItem(`order-${this.props.params.storeId}`, JSON.stringify(nextState.order));
 	}
 
 	addFish(fish){
@@ -78,7 +78,11 @@ class App extends React.Component {
 						}
 					</ul>
 				</div>
-				<Order fishes={this.state.fishes} order={this.state.order} />
+				<Order 
+				fishes={this.state.fishes}
+				params={this.props.params}  
+				order={this.state.order} 
+				/>
 				<Inventory addFish={this.addFish} loadSamples={this.loadSamples} addToOrder={this.addToOrder} />
 			</div>
 		);
