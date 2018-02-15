@@ -32,6 +32,10 @@ class App extends React.Component {
 		base.removeBinding(this.ref);
 	}
 
+	componentWillUpdate(nextProps, nextState){
+		console.log('msg', nextProps, nextState);
+	}
+
 	addFish(fish){
 		// update state
 		const fishes = {...this.state.fishes};
