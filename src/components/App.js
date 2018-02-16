@@ -9,7 +9,6 @@ import Fish from './Fish';
 class App extends React.Component {
 	constructor() {
 		super();
-		//
 		this.addFish = this.addFish.bind(this);
 		this.loadSamples = this.loadSamples.bind(this);
 		this.addToOrder = this.addToOrder.bind(this);
