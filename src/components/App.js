@@ -22,6 +22,7 @@ class App extends React.Component {
 
 	componentWillMount(){
 		// runs before app is rendered
+		// connnect to firebase DB 
 		this.ref = base.syncState(`${this.props.params.storeId}/fishes`
 		,{
 			context: this,
