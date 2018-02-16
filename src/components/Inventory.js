@@ -2,7 +2,7 @@ import React from 'react';
 import AddFishForm from './AddFishForm';
 
 class Inventory extends React.Component {
-
+	// bind function to component
 	constructor(){
 		super();
 		this.renderInventory = this.renderInventory.bind(this);
@@ -15,7 +15,6 @@ class Inventory extends React.Component {
 		const updatedFish = {...fish, 
 			[e.target.name]: e.target.value
 		};
-		console.log(updatedFish);
 		this.props.updateFish(key, updatedFish);
 	}
 
