@@ -41,7 +41,7 @@ class App extends React.Component {
 			});	
 		}
 	}
-	//
+
 	componentWillUnmount(){
 		base.removeBinding(this.ref);
 	}
