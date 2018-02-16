@@ -13,6 +13,8 @@ class App extends React.Component {
 		this.addFish = this.addFish.bind(this);
 		this.loadSamples = this.loadSamples.bind(this);
 		this.addToOrder = this.addToOrder.bind(this);
+		this.addFish = this.addFish.bind(this);
+		this.updateFish = this.updateFish.bind(this);
 		// get initial state
 		this.state = {
 			fishes: {},
@@ -57,6 +59,15 @@ class App extends React.Component {
 		this.setState({fishes});
 	}
 
+	updateFish(key, updatedFish){
+		// update state | make copy of fishes state
+		const fishes = {...this.state.fishes};
+		// update copy of stae with update data
+		fishes[key] = updatedFish;
+		// add update fishes state with new fish data
+		this.setState({fishes});
+	}
+
 	loadSamples(){
 		this.setState({
 			fishes: sampleFishes
@@ -95,8 +106,9 @@ class App extends React.Component {
 				order={this.state.order} 
 				/>
 				<Inventory 
-				addFish={this.addFish} 
+				addFish={this.addFish}
 				fishes={this.state.fishes}
+				updateFish={this.updateFish}  
 				loadSamples={this.loadSamples} 
 				addToOrder={this.addToOrder}
 				/>
