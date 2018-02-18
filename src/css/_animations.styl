@@ -24,3 +24,18 @@
 		max-height 0
 		padding 0 !important
 		transform translateX(120%)
+
+.count-enter
+	transition all .25s
+	transform translateY(100%) /* start off screnn */
+	&.count-enter-active
+		transform translateY(0)
+
+.count-leave
+	transition all .25s
+	position absolute
+	left 0
+	bottom 0
+	transform translateY(0)
+	&.count-leave-active
+		transform translateY(-100%) /* start off screnn */
