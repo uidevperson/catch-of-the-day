@@ -5,7 +5,7 @@ import Order from './Order';
 import Inventory from './Inventory';
 import sampleFishes from '../sample-fishes';
 import Fish from './Fish';
-
+// main App component
 class App extends React.Component {
 	constructor() {
 		super();
