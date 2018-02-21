@@ -6,7 +6,6 @@ class Order extends React.Component {
 	constructor(){
 		super();
 		this.renderOrder = this.renderOrder.bind(this);
-
 	}
 
 	renderOrder(key){
