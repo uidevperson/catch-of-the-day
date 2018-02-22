@@ -7,6 +7,7 @@ class Inventory extends React.Component {
 		super();
 		this.renderInventory = this.renderInventory.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.authenticate = this.authenticate.bind(this);
 	}
 
 	handleChange(e, key){
@@ -16,6 +17,22 @@ class Inventory extends React.Component {
 			[e.target.name]: e.target.value
 		};
 		this.props.updateFish(key, updatedFish);
+	}
+
+	authenticate(){
+
+	}
+
+	renderLogin(){
+		return (
+			<nav className="login">
+				<h2>Inventory</h2>
+				<p>Sign in to manage your storesInventory</p>
+				<button className="twitter" onClick={() => this.authenticate('twitter')}>Login with Twitter</button>
+		{/*		<button className="github" onClick={() => this.authenticate('github')}>Login with</button>
+				<button className="github" onClick={() => this.authenticate('github')}>Login with</button>*/}
+			</nav>
+		)
 	}
 
 	renderInventory(key){
