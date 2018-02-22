@@ -59,6 +59,8 @@ class Inventory extends React.Component {
 	} 
 
 	render(){
+		//
+		const logout = <button>Log Out</button>
 		//check if user is not logged in
 		if(!this.state.uid){
 			return <div>{this.renderLogin()}</div>
@@ -68,6 +70,7 @@ class Inventory extends React.Component {
 			return (
 				<div>
 					<p>Sorry you are not the owner of the store</p>
+					{logout}
 				</div>
 			)
 		}
@@ -75,6 +78,7 @@ class Inventory extends React.Component {
 		return (
 			<div>
 				<h2>Inventory</h2>
+				{logout}
 				{Object.keys(this.props.fishes).map(this.renderInventory)}
 				<AddFishForm addFish={this.props.addFish} />
 				<button onClick={this.props.loadSamples}>Load Sample Fishes</button>
