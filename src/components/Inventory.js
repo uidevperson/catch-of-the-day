@@ -10,11 +10,20 @@ class Inventory extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.renderLogin =  this.renderLogin.bind(this);
 		this.authenticate = this.authenticate.bind(this);
+		this.logout = this.logout.bind(this);
 		this.authHandler = this.authHandler.bind(this);
 		this.state = {
 			uid: null,
 			owner: null
 		}
+	}
+
+	componentDidMount(){
+		base.onAuth((user) => {
+			if(user){
+				this.authHandler(null, {user});
+			}
+		});
 	}
 
 	handleChange(e, key){
@@ -28,6 +37,13 @@ class Inventory extends React.Component {
 
 	authenticate(provider){
  		base.authWithOAuthPopup(provider, this.authHandler);
+	}
+
+	logout(){
+		base.unauth();
+		this.setState({
+			uid: null
+		});
 	}
 
 	authHandler(err, authData){
@@ -85,7 +101,7 @@ class Inventory extends React.Component {
 
 	render(){
 		//
-		const logout = <button>Log Out</button>
+		const logout = <button onClick={this.logout}>Log Out</button>
 		//check if user is not logged in
 		if(!this.state.uid){
 			return <div>{this.renderLogin()}</div>
