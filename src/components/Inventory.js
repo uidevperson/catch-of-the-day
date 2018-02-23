@@ -1,5 +1,6 @@
 import React from 'react';
 import AddFishForm from './AddFishForm';
+import base from '../base';
 
 class Inventory extends React.Component {
 	// bind function to component
@@ -9,6 +10,7 @@ class Inventory extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.renderLogin =  this.renderLogin.bind(this);
 		this.authenticate = this.authenticate.bind(this);
+		this.authHandler = this.authHandler.bind(this);
 		this.state = {
 			uid: null,
 			owner: null
@@ -24,7 +26,32 @@ class Inventory extends React.Component {
 		this.props.updateFish(key, updatedFish);
 	}
 
-	authenticate(){
+	authenticate(provider){
+ 		base.authWithOAuthPopup(provider, this.authHandler);
+	}
+
+	authHandler(err, authData){
+		// if err
+		if(err) {
+			console.error(err);
+		}
+		// grab store info
+		const storeRef = base.database().ref(this.props.storeId);
+		// query firebase once for stored data
+		storeRef.once('value', (snapshot) => {
+			const data = snapshot.val() || {};
+			//claim it as our if there is no owner already
+			if(!data.owner){
+				storeRef.set({
+					owner: authData.user.uid
+				});
+			}
+			// set state locally
+			this.setState({
+				uid: authData.user.uid,
+				owner: data.owner || authData.user.uid
+			});
+		});
 
 	}
 
@@ -40,14 +67,6 @@ class Inventory extends React.Component {
 
 	renderInventory(key){
 		const fish = this.props.fishes[key];
-
-		if(!this.state.uid){
-			return <div>{this.renderLogin()}</div>
-		}
-
-		if(this.state.uid === this.state.owner){
-
-		}
 
 		return (
 			 <div className="fish-edit" key={key}>
@@ -99,6 +118,7 @@ Inventory.propTypes = {
 	addFish: React.PropTypes.func.isRequired,
 	removeFish: React.PropTypes.func.isRequired,
 	loadSamples: React.PropTypes.func.isRequired,
+	storeId: React.PropTypes.string.isRequired
 };
 
 export default Inventory; 
