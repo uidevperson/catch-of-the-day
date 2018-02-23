@@ -34,14 +34,20 @@ class Inventory extends React.Component {
 				<h2>Inventory</h2>
 				<p>Sign in to manage your storesInventory</p>
 				<button className="twitter" onClick={() => this.authenticate('twitter')}>Login with Twitter</button>
-		{/*		<button className="github" onClick={() => this.authenticate('github')}>Login with</button>
-				<button className="github" onClick={() => this.authenticate('github')}>Login with</button>*/}
 			</nav>
 		)
 	}
 
 	renderInventory(key){
 		const fish = this.props.fishes[key];
+
+		if(!this.state.uid){
+			return <div>{this.renderLogin()}</div>
+		}
+
+		if(this.state.uid === this.state.owner){
+
+		}
 
 		return (
 			 <div className="fish-edit" key={key}>
